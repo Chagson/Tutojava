@@ -1,0 +1,106 @@
+package com.company;
+import java.util.Scanner;
+public class Main {
+
+    public static void main(String[] args) {
+	System.out.println("Geben sie den zu zahlender Betrag ein");
+    Scanner s = new Scanner(System.in);
+    double zuZahlen = s.nextDouble();
+    System.out.println("nun den zu erhaltenden");
+    double erhaltet = s.nextDouble();
+    int check = 0;
+    int check2 = 0;
+    int checkAnzahlAnMünzen = 0;
+    double chekZurückZuZahlen;
+    double zurückzuzahlen = erhaltet - zuZahlen;
+    System.out.println("Wechselgeld (erwartet): €" + zurückzuzahlen);
+
+    while (zurückzuzahlen >= 2){
+        System.out.println("2 Euro: 1");
+        check ++;
+        checkAnzahlAnMünzen++;
+        zurückzuzahlen = zurückzuzahlen - 2;
+    }
+    chekZurückZuZahlen = 2*check;
+    if(zurückzuzahlen >= 1) {
+        if(check == 0){
+            System.out.println("2 Euro: 0");
+        }
+        System.out.println("1 Euro: 1");
+        check = 1;
+        checkAnzahlAnMünzen++;
+        zurückzuzahlen = zurückzuzahlen - 1;
+    }
+    chekZurückZuZahlen = chekZurückZuZahlen + 1*check;
+    zurückzuzahlen = zurückzuzahlen*100;
+        if (zurückzuzahlen >= 50){
+            System.out.println("50 Cent: 1");
+            check = 1;
+            check2 = 1;
+            checkAnzahlAnMünzen++;
+            zurückzuzahlen = zurückzuzahlen - 50;
+        }
+        chekZurückZuZahlen = chekZurückZuZahlen*100 + 50*check;
+        check = 0;
+        if(check2 != 1){
+            System.out.println("50 cent: 0");
+        }
+        while(zurückzuzahlen >= 20) {
+            System.out.println("20 cent: 1");
+            check2 = 3;
+            check ++;
+            checkAnzahlAnMünzen++;
+            zurückzuzahlen = zurückzuzahlen - 20;
+        }
+        chekZurückZuZahlen = chekZurückZuZahlen + 20*check;
+        check = 0;
+        if(zurückzuzahlen >= 10) {
+            if(check2 != 3){
+                System.out.println("20 cent: 0");
+            }
+            System.out.println("10 cent: 1");
+            check2 = 4;
+            check ++;
+            checkAnzahlAnMünzen++;
+            zurückzuzahlen = zurückzuzahlen - 10;
+        }
+        chekZurückZuZahlen = chekZurückZuZahlen + 10*check;
+        check = 0;
+        if(zurückzuzahlen >= 5) {
+            if(check2 != 4){
+                System.out.println("10 cent: 0");
+            }
+            System.out.println("5 cent: 1");
+            check2 = 5;
+            check++;
+            checkAnzahlAnMünzen++;
+            zurückzuzahlen = zurückzuzahlen - 5;
+        }
+        chekZurückZuZahlen = chekZurückZuZahlen + 5*check;
+        check = 0;
+        while(zurückzuzahlen >= 2) {
+            if(check2 != 5){
+                System.out.println("5 cent: 0");
+            }
+            System.out.println("2 cent: 1");
+            check2 = 6;
+            check++;
+            checkAnzahlAnMünzen++;
+            zurückzuzahlen = zurückzuzahlen - 2;
+        }
+        chekZurückZuZahlen = chekZurückZuZahlen + 2*check;
+        check = 0;
+        if(zurückzuzahlen == 1) {
+            if(check != 6){
+                System.out.println("2 cent: 0");
+            }
+            System.out.println("1 cent: 1");
+            check = 1;
+            checkAnzahlAnMünzen++;
+        }
+        chekZurückZuZahlen = chekZurückZuZahlen + 1*check;
+        System.out.println("Wechselgeld (ausgezahlt) : €" +chekZurückZuZahlen/100);
+        System.out.println("insgesamt:" + checkAnzahlAnMünzen);
+    }
+
+}
